@@ -59,7 +59,7 @@ function create() {
 }
 
 function update() {
-  if (cursors.up.isDown) {
+  if (cursors.up.isDown && !hasLanded) {
     bird.setVelocityY(-160);
   }
 }
