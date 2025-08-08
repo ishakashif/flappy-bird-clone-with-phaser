@@ -61,5 +61,6 @@ function create() {
 function update() {
   if (cursors.up.isDown && !hasLanded) {
     bird.setVelocityY(-160);
+    bird.body.velocity.x = 50;
   }
 }
