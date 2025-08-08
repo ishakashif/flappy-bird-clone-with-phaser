@@ -30,6 +30,7 @@ function preload() {
 
 var bird;
 let hasLanded = false;
+let cursors;
 
 function create() {
   const background = this.add.image(0, 0, "background").setOrigin(0, 0);
@@ -53,7 +54,12 @@ function create() {
   bird.setCollideWorldBounds(true);
 
   this.physics.add.overlap(bird, road, () => (hasLanded = true), null, this);
-  this.physics.add.collider(bird, road);
+  this.physics.add.collider(bird, road); 
+  cursors = this.input.keyboard.createCursorsKeys();
 }
 
-function update() {}
+function update() {
+  if (cursors.up.isDown) {
+    bird.setVelocityY(-160);
+  }
+}
