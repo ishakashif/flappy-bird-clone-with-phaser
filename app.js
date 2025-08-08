@@ -28,7 +28,8 @@ let config = {
     this.load.spritesheet('bird', 'assets/bird.png', {frameWidth: 64, frameHeight: 96});
   } 
 
-  let bird;
+  let bird; 
+  let hasLanded = false;
 
   function create () {
     const background = this.add.image(0, 0, 'background').setOrigin(0,0);
