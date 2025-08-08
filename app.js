@@ -26,7 +26,9 @@ let config = {
     this.load.image('road', 'assets/road.png'); 
     this.load.image('column', 'assets/column.png');
     this.load.spritesheet('bird', 'assets/bird.png', {frameWidth: 64, frameHeight: 96});
-  }
+  } 
+
+  let bird;
 
   function create () {
     const background = this.add.image(0, 0, 'background').setOrigin(0,0);
@@ -42,8 +44,9 @@ let config = {
       setXY: { x: 350, y: 400, stepX: 300},
     });
     const road = roads.create(400, 568, 'road').setScale(2).refreshBody(); 
-
-
+    bird = this.physics.add.sprite(0, 50, 0, 'bird').setScale(2);
+    bird.setBounce(0.2);
+    bird.setCollideWorldBounds(true);
   }
 
   function update () {
