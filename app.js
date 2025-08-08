@@ -44,7 +44,7 @@ let config = {
       setXY: { x: 350, y: 400, stepX: 300},
     });
     const road = roads.create(400, 568, 'road').setScale(2).refreshBody(); 
-    bird = this.physics.add.sprite(0, 50, 0, 'bird').setScale(2);
+    bird = this.physics.add.sprite(0, 50, 'bird').setScale(2);
     bird.setBounce(0.2);
     bird.setCollideWorldBounds(true);
   }
