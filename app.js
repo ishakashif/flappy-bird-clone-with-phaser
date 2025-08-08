@@ -34,7 +34,7 @@ let cursors;
 
 function create() {
   const background = this.add.image(0, 0, "background").setOrigin(0, 0);
-  const roads = this.physics.add.staticGroup();
+      roads = this.physics.add.staticGroup();
   const topColumns = this.physics.add.staticGroup({
     key: "column",
     repeat: 1,
@@ -55,7 +55,7 @@ function create() {
 
   this.physics.add.overlap(bird, road, () => (hasLanded = true), null, this);
   this.physics.add.collider(bird, road); 
-  cursors = this.input.keyboard.createCursorsKeys();
+  cursors = this.input.keyboard.createCursorKeys();
 }
 
 function update() {
