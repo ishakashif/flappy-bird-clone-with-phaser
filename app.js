@@ -31,8 +31,13 @@ function preload() {
 var bird;
 let hasLanded = false;
 let cursors;
+let hasBumped = false;
 
 function create() {
+  this.physics.add.overlap(bird, topColumns, ()=>hasBumped=true,null, this);
+  this.physics.add.overlap(bird, bottomColumns, ()=>hasBumped=true,null, this);
+  this.physics.add.collider(bird, topColumns);
+  this.physics.add.collider(bird, bottomColumns);
   const background = this.add.image(0, 0, "background").setOrigin(0, 0);
       roads = this.physics.add.staticGroup();
   const topColumns = this.physics.add.staticGroup({
