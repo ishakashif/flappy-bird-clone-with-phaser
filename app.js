@@ -32,8 +32,10 @@ var bird;
 let hasLanded = false;
 let cursors;
 let hasBumped = false;
+let messageToPlayer;
 
 function create() {
+  messageToPlayer = this.add.text(0, 0, `Instructions: Press space bar to start`, { fontFamily: '"Comic Sans MS", Times, serif', fontSize: "20px", color: "white", backgroundColor: "black" });
   this.physics.add.overlap(bird, topColumns, ()=>hasBumped=true,null, this);
   this.physics.add.overlap(bird, bottomColumns, ()=>hasBumped=true,null, this);
   this.physics.add.collider(bird, topColumns);
