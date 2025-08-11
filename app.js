@@ -64,10 +64,11 @@ function create() {
 }
 
 function update() {
-  if (!hasLanded) {
-    bird.body.velocity.x = 50;
-  }
-  if (hasLanded) {
+  if (!hasLanded || !hasBumped) {
+  bird.body.velocity.x = 50;
+}
+
+  if (hasLanded || hasBumped || !isGameStarted) {
     bird.body.velocity.x = 0;
   }
 }
