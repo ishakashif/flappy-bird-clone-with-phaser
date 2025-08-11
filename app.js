@@ -33,15 +33,12 @@ let hasLanded = false;
 let cursors;
 let hasBumped = false;
 let messageToPlayer;
+let roads;
+let isGameStarted = false;
 
 function create() {
   messageToPlayer = this.add.text(0, 0, `Instructions: Press space bar to start`, { fontFamily: '"Comic Sans MS", Times, serif', fontSize: "20px", color: "white", backgroundColor: "black" });
-  this.physics.add.overlap(bird, topColumns, ()=>hasBumped=true,null, this);
-  this.physics.add.overlap(bird, bottomColumns, ()=>hasBumped=true,null, this);
-  this.physics.add.collider(bird, topColumns);
-  this.physics.add.collider(bird, bottomColumns);
-  const background = this.add.image(0, 0, "background").setOrigin(0, 0);
-      roads = this.physics.add.staticGroup();
+  roads = this.physics.add.staticGroup();
   const topColumns = this.physics.add.staticGroup({
     key: "column",
     repeat: 1,
@@ -54,6 +51,12 @@ function create() {
     setXY: { x: 350, y: 400, stepX: 300 },
   });
 
+  this.physics.add.overlap(bird, topColumns, () => hasBumped = true, null, this);
+  this.physics.add.overlap(bird, bottomColumns, () => hasBumped = true, null, this);
+  this.physics.add.collider(bird, topColumns);
+  this.physics.add.collider(bird, bottomColumns);
+
+  const background = this.add.image(0, 0, "background").setOrigin(0, 0);
   const road = roads.create(400, 568, "road").setScale(2).refreshBody();
 
   bird = this.physics.add.sprite(0, 50, "bird").setScale(2);
@@ -61,14 +64,14 @@ function create() {
   bird.setCollideWorldBounds(true);
 
   this.physics.add.overlap(bird, road, () => (hasLanded = true), null, this);
-  this.physics.add.collider(bird, road); 
+  this.physics.add.collider(bird, road);
   cursors = this.input.keyboard.createCursorKeys();
 }
 
 function update() {
   if (!hasLanded || !hasBumped) {
-  bird.body.velocity.x = 50;
-}
+    bird.body.velocity.x = 50;
+  }
 
   if (hasLanded || hasBumped || !isGameStarted) {
     bird.body.velocity.x = 0;
