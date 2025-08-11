@@ -63,4 +63,5 @@ function update() {
     bird.setVelocityY(-160);
     bird.body.velocity.x = 50;
   }
+  bird.body.velocity.x = 50;
 }
