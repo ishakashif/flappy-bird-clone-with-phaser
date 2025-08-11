@@ -64,3 +64,4 @@ function update() {
     bird.body.velocity.x = 50;
   }
 }
+/* + */
