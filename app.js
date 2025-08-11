@@ -64,4 +64,4 @@ function update() {
     bird.body.velocity.x = 50;
   }
 }
-/* actually using Javascript comments this time */
+/* */
